@@ -6,6 +6,23 @@ use spl_token::instruction::initialize_mint;
 use base64;
 use base64::Engine as _;
 
+async fn generate_keypair() -> impl IntoResponse {
+    let keypair = Keypair::new();
+    let address = keypair.pubkey();
+    let secret_key = keypair.to_bytes();
+
+    let response = serde_json::json!({
+        "success": true,
+        "data": {
+            "pubkey": address.to_string(),
+            "secret": bs58::encode(secret_key).into_string(),
+        }
+    });
+    axum::Json(response)
+}
+
+// ------------------------------------------------------------------------------------------
+
 #[derive(Deserialize)]
 struct CreateTokenRequest {
     #[serde(rename = "mintAuthority")]
@@ -70,20 +87,7 @@ async fn create_token(axum::Json(payload): axum::Json<CreateTokenRequest>) -> im
     }))
 }
 
-async fn generate_keypair() -> impl IntoResponse {
-    let keypair = Keypair::new();
-    let address = keypair.pubkey();
-    let secret_key = keypair.to_bytes();
-
-    let response = serde_json::json!({
-        "success": true,
-        "data": {
-            "pubkey": address.to_string(),
-            "secret": bs58::encode(secret_key).into_string(),
-        }
-    });
-    axum::Json(response)
-}
+// ------------------------------------------------------------------------------------------
 
 #[tokio::main]
 async fn main() {
