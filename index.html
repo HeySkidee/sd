@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>FEVER HARDSTYLE</title>
+
+    <meta property="og:title" content="FEVER HARDSTYLE" />
+    <meta property="og:description" content="Play if u like chaos" />
+    <meta property="og:url" content="https://skidee.xyz/fever-hardstyle" />
+    <meta property="twitter:image" content="./assets/imgs/yabujin.jpg" />
+    <meta name="theme-color" content="#B7E1F1">
+
+    <link rel="icon" href="./assets/imgs/yabujin.jpg" type="image/gif" sizes="16x16">
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<script>
+    function gunPosition(e) {
+    var gun = document.getElementById("gun");
+    gun.style.left = e.pageX + 'px';
+    gun.style.top = e.pageY + 'px';
+}
+</script>
+<body onmousemove="gunPosition(event)">
+    <!-- running dark path walking fast bg -->
+
+    <!-- add changoos rainbow japanese thing in setting menu after the heading settings as a divider
+    <div id="select-gun">
+        <button>AK47</button>
+        <button>Glock</button>
+    </div> -->
+
+	<div id="play" onclick="play()">
+        <img src="assets/imgs/play-4.png" alt="play" id="play">
+	</div>
+
+    
+    <div id="game">
+        <div id="menu">
+            <h2>FEVER HARDSTYLE</h2>
+            <p>(Fever Dream + Russian Hardstyle)</p>
+            <p>there are no audio settings coz loud music == chaos == fun</p>
+            <button onclick="location.reload()">Restart</button>
+        </div>
+
+        <div id="game-over">
+            <h2>FEVER HARDSTYLE</h2>
+            <p>(Fever Dream + Russian Hardstyle)</p>
+            <br>
+            <h1>game over</h1>
+            <div id="score">
+                <p>HITS: 0</p>
+                <p>MISS: 0</p>
+                <p>HIGH SCORE: 0</p>
+            </div>
+            <button onclick="location.reload()">Restart</button>
+            <a href="https://buymeacoffee.com/skidee">support</a>
+            <a href="https://github.com/HeySkidee">github</a>
+        </div>
+
+        <img src="./assets/imgs/blood1.png" id="blood">
+        
+        <div id="score">
+            <p>HITS: 0</p>
+            <p>MISS: 0</p>
+            <p>HIGH SCORE: 0</p>
+        </div>
+
+        <div id="targets"></div>
+
+
+        <img src="assets/imgs/gun1.png" id="gun">
+        <!-- <div id="gun" style="background-color:#990000; width:20px; height:20px; position:absolute;" />  -->
+    </div>
+
+	<audio id="bg-music">
+		<source src="assets/sounds/RUSSIAN-HARDSTYLE.mp3">
+	</audio>
+
+	<audio id="gunshot-sfx">
+		<source src="assets/sounds/gunshot-sfx.mp3">
+	</audio>
+
+</body>
+
+<script src="js/script.js"></script>
+
+</html>
